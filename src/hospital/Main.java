@@ -91,5 +91,44 @@ public class Main {
         stack.pop();
         stack.pop();
         stack.pop(); // this should show "Stack is empty" message
+
+        // ===================== LINKED LIST DEMO =====================
+        System.out.println("\n\n===== Patient Visit History Demo =====");
+
+        VisitLinkedList visitHistory = new VisitLinkedList();
+
+        // Add visit records
+        visitHistory.add(new VisitRecord(401, 204, "Sanduni Rathnayake", "2026-01-12",
+                "Dr. Perera", "Sprained Ankle", "Bandage applied, rest advised"));
+        visitHistory.add(new VisitRecord(402, 204, "Sanduni Rathnayake", "2026-04-03",
+                "Dr. Fernando", "Follow-up Checkup", "Ankle fully healed"));
+        visitHistory.add(new VisitRecord(403, 204, "Sanduni Rathnayake", "2026-07-20",
+                "Dr. Silva", "Routine Checkup", "No issues found"));
+
+        System.out.println("\n----- Full Visit History -----");
+        visitHistory.displayList();
+
+        System.out.println("\n----- Searching for Visit ID 402 -----");
+        VisitRecord foundVisit = visitHistory.search(402);
+        if (foundVisit != null) {
+            foundVisit.displayDetails();
+        }
+
+        System.out.println("\n----- Searching for Non-Existent Visit ID 999 -----");
+        visitHistory.search(999); // should show "not found" message
+
+        System.out.println("\n----- Removing Visit ID 402 -----");
+        visitHistory.remove(402);
+
+        System.out.println("\n----- Visit History After Removal -----");
+        visitHistory.displayList();
+
+        System.out.println("\n----- Removing Non-Existent Visit ID 999 -----");
+        visitHistory.remove(999); // should show "not found" message
+
+        System.out.println("\n----- Emptying the Visit History -----");
+        visitHistory.remove(401);
+        visitHistory.remove(403);
+        visitHistory.remove(999); // this should show "empty" message
     }
 }
