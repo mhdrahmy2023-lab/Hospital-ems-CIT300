@@ -64,5 +64,32 @@ public class Main {
         queue.dequeue();
         queue.dequeue();
         queue.dequeue(); // this should show "Queue is empty" message
+
+        // ===================== STACK DEMO =====================
+        System.out.println("\n\n===== Treatment History Stack Demo =====");
+
+        TreatmentStack stack = new TreatmentStack(10);
+
+        // Push completed treatment records
+        stack.push(new TreatmentRecord(301, "Nadeesha Kumari", "ECG done, prescribed rest and pain medication", "2026-09-06"));
+        stack.push(new TreatmentRecord(302, "Ashan Bandara", "Arm X-ray and cast applied", "2026-09-06"));
+        stack.push(new TreatmentRecord(303, "Thilini Gunasekara", "Fever medication administered", "2026-09-06"));
+
+        System.out.println("\n----- Current Treatment History -----");
+        stack.displayStack();
+
+        System.out.println("\n----- Pop (Undo Most Recent Treatment Record) -----");
+        TreatmentRecord popped = stack.pop();
+        if (popped != null) {
+            System.out.println("Removed record for: " + popped.patientName);
+        }
+
+        System.out.println("\n----- Treatment History After Pop -----");
+        stack.displayStack();
+
+        System.out.println("\n----- Emptying the Stack -----");
+        stack.pop();
+        stack.pop();
+        stack.pop(); // this should show "Stack is empty" message
     }
 }
